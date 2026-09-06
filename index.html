@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDLCFactory.com + SDLCFactory.ai — Domain Bundle for Sale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: rgba(18, 24, 38, 0.7);
+      --bg-card-hover: rgba(28, 36, 56, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 242, 254, 0.3);
+      --text-main: #f0f4f8;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-blue: #00f2fe;
+      --accent-purple: #7928ca;
+      --accent-teal: #00f5d4;
+      --gradient-primary: linear-gradient(135deg, #00f2fe 0%, #7928ca 50%, #00f5d4 100%);
+      --gradient-text: linear-gradient(135deg, #ffffff 30%, #00f2fe 70%, #00f5d4 100%);
+      --gradient-pill: linear-gradient(135deg, rgba(121, 40, 202, 0.25) 0%, rgba(0, 242, 254, 0.25) 100%);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --shadow-glow: 0 0 40px rgba(0, 242, 254, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Glows */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(140px);
+      opacity: 0.18;
+    }
+
+    body::before {
+      top: -200px;
+      left: -100px;
+      background: radial-gradient(circle, var(--accent-blue), var(--accent-purple));
+    }
+
+    body::after {
+      bottom: -100px;
+      right: -100px;
+      background: radial-gradient(circle, var(--accent-teal), var(--accent-purple));
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Nav */
+    header {
+      padding: 32px 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-mark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .badge-bundle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-pill);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--accent-blue);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      box-shadow: 0 0 10px var(--accent-teal);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    .hero-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.75rem, 6vw, 4.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--gradient-primary);
+      color: #05070c;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 18px 42px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.35);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 45px rgba(0, 242, 254, 0.6);
+    }
+
+    .cta-btn svg {
+      transition: transform 0.3s ease;
+    }
+
+    .cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Price Badge Pill */
+    .price-section {
+      text-align: center;
+      margin: 20px 0 70px;
+    }
+
+    .price-pill {
+      display: inline-block;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      padding: 24px 44px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-pill::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+    }
+
+    .price-amount {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .price-subtext {
+      color: var(--accent-blue);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      font-size: 1.05rem;
+    }
+
+    /* Why Section - Bullets Grid */
+    .why-section {
+      padding: 60px 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .why-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      padding: 32px 28px;
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .why-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+    }
+
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--accent-blue);
+    }
+
+    .why-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .why-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Who Section - Persona Cards */
+    .who-section {
+      padding: 60px 0;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .persona-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      padding: 28px 24px;
+      border-radius: var(--radius-md);
+      transition: all 0.3s ease;
+    }
+
+    .persona-card:hover {
+      border-color: rgba(121, 40, 202, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .persona-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-teal);
+      margin-bottom: 12px;
+    }
+
+    .persona-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .persona-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Offer Form Section */
+    .offer-section {
+      padding: 80px 0;
+      scroll-margin-top: 40px;
+    }
+
+    .form-wrapper {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      max-width: 760px;
+      margin: 0 auto;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .form-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius-lg);
+      padding: 1px;
+      background: var(--gradient-primary);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* Custom Form Layout */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .form-label .required {
+      color: #ff4757;
+      margin-left: 4px;
+    }
+
+    .form-help {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(10, 14, 23, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    .radio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .radio-card {
+      background: rgba(10, 14, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .radio-card:hover {
+      border-color: rgba(0, 242, 254, 0.4);
+      background: rgba(0, 242, 254, 0.05);
+    }
+
+    .radio-card input[type="radio"] {
+      accent-color: var(--accent-blue);
+      width: 16px;
+      height: 16px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--gradient-primary);
+      color: #05070c;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 242, 254, 0.5);
+    }
+
+    .fallback-box {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .fallback-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .fallback-link:hover {
+      color: var(--accent-teal);
+      text-decoration: underline;
+    }
+
+    .iframe-container {
+      width: 100%;
+      min-height: 850px;
+      border: none;
+      border-radius: var(--radius-md);
+      display: none;
+    }
+
+    /* Success Alert */
+    .success-message {
+      display: none;
+      background: rgba(0, 245, 212, 0.1);
+      border: 1px solid var(--accent-teal);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .success-message h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      color: var(--accent-teal);
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-email {
+      color: var(--text-main);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .footer-email a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    .footer-email a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 0 40px;
+      }
+      .form-wrapper {
+        padding: 24px 18px;
+      }
+      .price-pill {
+        padding: 18px 24px;
+      }
+      .radio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="container">
+    <header>
+      <div class="logo-mark">
+        <div class="logo-icon">SF</div>
+        SDLCFactory
+      </div>
+      <a href="#offer-form" class="cta-btn" style="padding: 10px 24px; font-size: 0.95rem;">Make an Offer</a>
+    </header>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge-bundle fade-in">
+        <span class="badge-dot"></span> Sold as a bundle
+      </div>
+      <h1 class="hero-headline fade-in">SDLCFactory.com + .ai</h1>
+      <p class="hero-tagline fade-in">
+        The premium domain pair for an AI-agent-driven software delivery platform — where autonomous AI agents handle the full SDLC, from requirement analysis through deployment.
+      </p>
+      <div class="fade-in">
+        <a href="#offer-form" class="cta-btn">
+          Make an Offer
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price Badge -->
+  <section class="price-section fade-in">
+    <div class="container">
+      <div class="price-pill">
+        <div class="price-amount">$8,000 – $30,000</div>
+        <div class="price-subtext">For both domains together</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Bundle -->
+  <section class="why-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Why This Bundle</h2>
+      <p class="section-subtitle fade-in">Establish instant authority in the AI agentic software category.</p>
+      
+      <div class="why-grid">
+        <div class="why-card fade-in">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="why-title">Matching .com + .ai Pair</div>
+          <div class="why-desc">No extension compromise. Securing both extensions removes buyer confusion and protects brand equity across both web and AI ecosystems.</div>
+        </div>
+
+        <div class="why-card fade-in">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="why-title">Clear Descriptive Name</div>
+          <div class="why-desc">Instantly signals an automated software manufacturing engine — SDLC (Software Development Life Cycle) + Factory.</div>
+        </div>
+
+        <div class="why-card fade-in">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="why-title">Fast-Growing Category</div>
+          <div class="why-desc">Directly targets the exploding AI coding agents and agent-native software development platforms sector.</div>
+        </div>
+
+        <div class="why-card fade-in">
+          <div class="why-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="why-title">Plug into Product Today</div>
+          <div class="why-desc">Ready for immediate transfer. Seamlessly brand your next product, platform, or company identity today.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="who-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Who This Is For</h2>
+      <p class="section-subtitle fade-in">Tailor-made positioning for market leaders in AI software delivery.</p>
+
+      <div class="who-grid">
+        <div class="persona-card fade-in">
+          <div class="persona-tag">Startups</div>
+          <div class="persona-title">AI Coding & DevOps Startups</div>
+          <div class="persona-desc">Ventures creating autonomous developer agents, automated code generation, and CI/CD pipelines.</div>
+        </div>
+
+        <div class="persona-card fade-in">
+          <div class="persona-tag">Consultancies</div>
+          <div class="persona-title">IT Services Platforms</div>
+          <div class="persona-desc">IT and engineering firms productizing agentic software delivery systems for clients.</div>
+        </div>
+
+        <div class="persona-card fade-in">
+          <div class="persona-tag">Enterprise</div>
+          <div class="persona-title">Engineering Tool Vendors</div>
+          <div class="persona-desc">Software vendors establishing an authoritative brand for their AI automation platform.</div>
+        </div>
+
+        <div class="persona-card fade-in">
+          <div class="persona-tag">Founders</div>
+          <div class="persona-title">SDLC Automation Founders</div>
+          <div class="persona-desc">Founders launching a new SDLC automation product looking for an elite, memorable domain pair.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offer Form Section -->
+  <section class="offer-section" id="offer-form">
+    <div class="container">
+      <h2 class="section-title fade-in">SDLCFactory.com + .ai — Make an Offer</h2>
+      <p class="section-subtitle fade-in">Both domains included together in one single sale.</p>
+
+      <div class="form-wrapper fade-in">
+        
+        <div id="success-alert" class="success-message">
+          <h4>Offer Received!</h4>
+          <p>Thanks — I'll reach out on your preferred channel within 24 hours.</p>
+        </div>
+
+        <!-- Embedded Google Form Container -->
+        <iframe id="google-form-iframe" class="iframe-container" src="" title="Google Form Offer"></iframe>
+
+        <!-- Direct Interactive Offer Form (Out of the box active form) -->
+        <form id="offer-custom-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">1. Full Name <span class="required">*</span></label>
+            <input type="text" class="form-input" id="full-name" required placeholder="e.g. Alex Morgan">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">2. Email Address <span class="required">*</span></label>
+            <input type="email" class="form-input" id="email-address" required placeholder="e.g. alex@company.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">3. Phone Number <span class="required">*</span></label>
+            <input type="tel" class="form-input" id="phone-number" required placeholder="e.g. +1 (555) 019-2834">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">4. Country <span class="required">*</span></label>
+            <input type="text" class="form-input" id="country" required placeholder="e.g. United States">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">5. Preferred messaging channel <span class="required">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card"><input type="radio" name="channel" value="WhatsApp" required checked> WhatsApp</label>
+              <label class="radio-card"><input type="radio" name="channel" value="Telegram" required> Telegram</label>
+              <label class="radio-card"><input type="radio" name="channel" value="Signal" required> Signal</label>
+              <label class="radio-card"><input type="radio" name="channel" value="WeChat" required> WeChat</label>
+              <label class="radio-card"><input type="radio" name="channel" value="iMessage" required> iMessage</label>
+              <label class="radio-card"><input type="radio" name="channel" value="Other" required> Other</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">6. Your ID/handle on that channel <span class="required">*</span></label>
+            <div class="form-help">e.g. your WhatsApp number, Telegram @username, etc.</div>
+            <input type="text" class="form-input" id="channel-id" required placeholder="@username or phone number">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">7. Your offer amount (USD) <span class="required">*</span></label>
+            <div class="form-help">Offer is for both domains together.</div>
+            <input type="number" class="form-input" id="offer-amount" min="1" step="1" required placeholder="e.g. 15000">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">8. Intended use for the domains</label>
+            <textarea class="form-textarea" id="intended-use" rows="3" placeholder="Describe your product or intended use (optional)..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Offer</button>
+        </form>
+
+        <div class="fallback-box">
+          <a href="#" id="google-form-link" target="_blank" class="fallback-link">
+            Open Google Form directly in new tab
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-email">
+        Contact Email: <a href="mailto:[YOUR-EMAIL-HERE]">[YOUR-EMAIL-HERE]</a>
+      </div>
+      <p>Both domains available together via direct sale — no broker</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth Scroll to Anchor
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Scroll Fade In Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form Submission Handling
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('offer-custom-form').style.display = 'none';
+      document.getElementById('success-alert').style.display = 'block';
+    }
+
+    // Configure Google Form Embed URL if provided dynamically
+    window.setGoogleFormEmbed = function(embedUrl, directUrl) {
+      if (embedUrl) {
+        const iframe = document.getElementById('google-form-iframe');
+        iframe.src = embedUrl;
+        iframe.style.display = 'block';
+        document.getElementById('offer-custom-form').style.display = 'none';
+      }
+      if (directUrl) {
+        document.getElementById('google-form-link').href = directUrl;
+      }
+    };
+  </script>
+</body>
+</html>
