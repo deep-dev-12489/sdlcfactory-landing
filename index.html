@@ -721,9 +721,10 @@
         <iframe id="google-form-iframe" class="iframe-container" src="" title="Google Form Offer"></iframe>
 
         <!-- Direct Interactive Offer Form (Connected to pawan2329@gmail.com) -->
-        <form id="offer-custom-form" action="https://formsubmit.co/pawan2329@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
+        <form id="offer-custom-form" action="https://formsubmit.co/pawan2329@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="🔥 New Offer for SDLCFactory.com + .ai Bundle!">
           <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://sdlcfactory.com/?submitted=true#offer-form">
 
           <div class="form-group">
             <label class="form-label">1. Full Name <span class="required">*</span></label>
@@ -826,42 +827,12 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Form Submission Handling via FormSubmit AJAX
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = document.getElementById('submit-btn-el');
-      btn.disabled = true;
-      btn.innerText = 'Submitting Offer...';
-
-      fetch('https://formsubmit.co/ajax/pawan2329@gmail.com', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          "_subject": "🔥 New Offer for SDLCFactory.com + .ai Bundle!",
-          "Full Name": form.querySelector('[name="Full Name"]').value,
-          "Email": form.querySelector('[name="Email"]').value,
-          "Phone Number": form.querySelector('[name="Phone Number"]').value,
-          "Country": form.querySelector('[name="Country"]').value,
-          "Preferred Channel": form.querySelector('[name="Preferred Channel"]:checked').value,
-          "Channel Handle/ID": form.querySelector('[name="Channel Handle/ID"]').value,
-          "Offer Amount (USD)": form.querySelector('[name="Offer Amount (USD)"]').value,
-          "Intended Use": form.querySelector('[name="Intended Use"]').value
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        form.style.display = 'none';
-        document.getElementById('success-alert').style.display = 'block';
-      })
-      .catch(error => {
-        console.error('Error submitting form:', error);
-        form.style.display = 'none';
-        document.getElementById('success-alert').style.display = 'block';
-      });
+    // Check if form was submitted via URL redirect
+    if (window.location.search.includes('submitted=true')) {
+      const formEl = document.getElementById('offer-custom-form');
+      const alertEl = document.getElementById('success-alert');
+      if (formEl) formEl.style.display = 'none';
+      if (alertEl) alertEl.style.display = 'block';
     }
 
     // Configure Google Form Embed URL if provided dynamically
