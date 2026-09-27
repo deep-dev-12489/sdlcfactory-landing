@@ -720,58 +720,61 @@
         <!-- Embedded Google Form Container -->
         <iframe id="google-form-iframe" class="iframe-container" src="" title="Google Form Offer"></iframe>
 
-        <!-- Direct Interactive Offer Form (Out of the box active form) -->
-        <form id="offer-custom-form" onsubmit="handleFormSubmit(event)">
+        <!-- Direct Interactive Offer Form (Connected to pwawan2329@gmail.com) -->
+        <form id="offer-custom-form" action="https://formsubmit.co/pwawan2329@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
+          <input type="hidden" name="_subject" value="🔥 New Offer for SDLCFactory.com + .ai Bundle!">
+          <input type="hidden" name="_captcha" value="false">
+
           <div class="form-group">
             <label class="form-label">1. Full Name <span class="required">*</span></label>
-            <input type="text" class="form-input" id="full-name" required placeholder="e.g. Alex Morgan">
+            <input type="text" class="form-input" name="Full Name" id="full-name" required placeholder="e.g. Alex Morgan">
           </div>
 
           <div class="form-group">
             <label class="form-label">2. Email Address <span class="required">*</span></label>
-            <input type="email" class="form-input" id="email-address" required placeholder="e.g. alex@company.com">
+            <input type="email" class="form-input" name="Email" id="email-address" required placeholder="e.g. alex@company.com">
           </div>
 
           <div class="form-group">
             <label class="form-label">3. Phone Number <span class="required">*</span></label>
-            <input type="tel" class="form-input" id="phone-number" required placeholder="e.g. +1 (555) 019-2834">
+            <input type="tel" class="form-input" name="Phone Number" id="phone-number" required placeholder="e.g. +1 (555) 019-2834">
           </div>
 
           <div class="form-group">
             <label class="form-label">4. Country <span class="required">*</span></label>
-            <input type="text" class="form-input" id="country" required placeholder="e.g. United States">
+            <input type="text" class="form-input" name="Country" id="country" required placeholder="e.g. United States">
           </div>
 
           <div class="form-group">
             <label class="form-label">5. Preferred messaging channel <span class="required">*</span></label>
             <div class="radio-grid">
-              <label class="radio-card"><input type="radio" name="channel" value="WhatsApp" required checked> WhatsApp</label>
-              <label class="radio-card"><input type="radio" name="channel" value="Telegram" required> Telegram</label>
-              <label class="radio-card"><input type="radio" name="channel" value="Signal" required> Signal</label>
-              <label class="radio-card"><input type="radio" name="channel" value="WeChat" required> WeChat</label>
-              <label class="radio-card"><input type="radio" name="channel" value="iMessage" required> iMessage</label>
-              <label class="radio-card"><input type="radio" name="channel" value="Other" required> Other</label>
+              <label class="radio-card"><input type="radio" name="Preferred Channel" value="WhatsApp" required checked> WhatsApp</label>
+              <label class="radio-card"><input type="radio" name="Preferred Channel" value="Telegram" required> Telegram</label>
+              <label class="radio-card"><input type="radio" name="Preferred Channel" value="Signal" required> Signal</label>
+              <label class="radio-card"><input type="radio" name="Preferred Channel" value="WeChat" required> WeChat</label>
+              <label class="radio-card"><input type="radio" name="Preferred Channel" value="iMessage" required> iMessage</label>
+              <label class="radio-card"><input type="radio" name="Preferred Channel" value="Other" required> Other</label>
             </div>
           </div>
 
           <div class="form-group">
             <label class="form-label">6. Your ID/handle on that channel <span class="required">*</span></label>
             <div class="form-help">e.g. your WhatsApp number, Telegram @username, etc.</div>
-            <input type="text" class="form-input" id="channel-id" required placeholder="@username or phone number">
+            <input type="text" class="form-input" name="Channel Handle/ID" id="channel-id" required placeholder="@username or phone number">
           </div>
 
           <div class="form-group">
             <label class="form-label">7. Your offer amount (USD) <span class="required">*</span></label>
             <div class="form-help">Offer is for both domains together.</div>
-            <input type="number" class="form-input" id="offer-amount" min="1" step="1" required placeholder="e.g. 15000">
+            <input type="number" class="form-input" name="Offer Amount (USD)" id="offer-amount" min="1" step="1" required placeholder="e.g. 15000">
           </div>
 
           <div class="form-group">
             <label class="form-label">8. Intended use for the domains</label>
-            <textarea class="form-textarea" id="intended-use" rows="3" placeholder="Describe your product or intended use (optional)..."></textarea>
+            <textarea class="form-textarea" name="Intended Use" id="intended-use" rows="3" placeholder="Describe your product or intended use (optional)..."></textarea>
           </div>
 
-          <button type="submit" class="submit-btn">Submit Offer</button>
+          <button type="submit" class="submit-btn" id="submit-btn-el">Submit Offer</button>
         </form>
 
         <div class="fallback-box">
@@ -823,11 +826,42 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Form Submission Handling
+    // Form Submission Handling via FormSubmit AJAX
     function handleFormSubmit(e) {
       e.preventDefault();
-      document.getElementById('offer-custom-form').style.display = 'none';
-      document.getElementById('success-alert').style.display = 'block';
+      const form = e.target;
+      const btn = document.getElementById('submit-btn-el');
+      btn.disabled = true;
+      btn.innerText = 'Submitting Offer...';
+
+      fetch('https://formsubmit.co/ajax/pwawan2329@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          "_subject": "🔥 New Offer for SDLCFactory.com + .ai Bundle!",
+          "Full Name": form.querySelector('[name="Full Name"]').value,
+          "Email": form.querySelector('[name="Email"]').value,
+          "Phone Number": form.querySelector('[name="Phone Number"]').value,
+          "Country": form.querySelector('[name="Country"]').value,
+          "Preferred Channel": form.querySelector('[name="Preferred Channel"]:checked').value,
+          "Channel Handle/ID": form.querySelector('[name="Channel Handle/ID"]').value,
+          "Offer Amount (USD)": form.querySelector('[name="Offer Amount (USD)"]').value,
+          "Intended Use": form.querySelector('[name="Intended Use"]').value
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        form.style.display = 'none';
+        document.getElementById('success-alert').style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        form.style.display = 'none';
+        document.getElementById('success-alert').style.display = 'block';
+      });
     }
 
     // Configure Google Form Embed URL if provided dynamically
